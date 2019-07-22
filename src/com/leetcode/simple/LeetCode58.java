@@ -8,7 +8,6 @@ package com.leetcode.simple;
  * 示例:
  * 输入: "Hello World"
  * 输出: 5
- * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/length-of-last-word
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。

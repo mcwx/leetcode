@@ -13,7 +13,6 @@ package com.leetcode.simple;
  * 21 被读作 "one 2",  "one 1" （"一个二" ,  "一个一") , 即 1211。
  * 给定一个正整数 n（1 ≤ n ≤ 30），输出报数序列的第 n 项。
  * 注意：整数顺序将表示为一个字符串。
- *
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/count-and-say/
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
