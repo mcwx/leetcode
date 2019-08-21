@@ -1,6 +1,6 @@
 package com.leetcode.entrance;
 
-import com.leetcode.simple.LeetCode67;
+import com.leetcode.simple.LeetCode69;
 
 
 /**
@@ -20,7 +20,10 @@ public class HelloWorld {
 //            for (int i:result) {
 //                System.out.println(i);
 //            }
-            System.out.println(LeetCode67.addBinary("10101101","101001110"));
+//            System.out.println(LeetCode67.addBinary("10101101","101001110"));
+
+
+            System.out.println(LeetCode69.mySqrt(16));
 
         } catch (Exception e) {
             e.printStackTrace();
