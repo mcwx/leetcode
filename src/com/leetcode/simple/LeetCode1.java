@@ -28,4 +28,23 @@ public class LeetCode1 {
         }
         throw new IllegalArgumentException("No two sum solution");
     }
+
+    /**
+     * 暴力法
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int[] twoSum1(int[] nums, int target) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (target - nums[j] == nums[i]) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+
 }
