@@ -26,7 +26,7 @@ import java.util.Set;
  * @Auther: houpeng
  * @Date: 2019-08-26
  */
-public class LeetNode141 {
+public class LeetCode141 {
 
     /**
      * 快慢指针相遇法
