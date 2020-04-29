@@ -28,15 +28,22 @@ public class LeetCode55 {
 
     public boolean canJump(int[] nums) {
         int nLength = nums.length;
-        int rightMost = 0;
+        int mostRight = 0;
         for (int i = 0; i < nLength; i++) {
-            if (i <= rightMost) {
-                rightMost = Math.max(rightMost, i + nums[i]);
-                if (nLength - 1 <= rightMost) {
+            if (mostRight >= i) {
+                mostRight = Math.max(mostRight, i + nums[i]);
+                if (mostRight >= nLength - 1) {
                     return true;
                 }
+
             }
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        int[] testData = new int[]{2,3,1,1,4};
+        LeetCode55 leetCode55 = new LeetCode55();
+        System.out.println(leetCode55.canJump(testData));
     }
 }
