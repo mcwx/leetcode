@@ -39,7 +39,7 @@ public class LeetCode268 {
                 return i;
             }
         }
-        return i + 1;
+        return i;
     }
 
     /**
