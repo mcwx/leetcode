@@ -82,7 +82,7 @@ public class LeetCode189 {
         reverse(nums, k, nums.length - 1);
     }
 
-    public static void reverse(int[] array, int start, int end) {
+    private static void reverse(int[] array, int start, int end) {
         while (start < end) {
             int tmp = array[start];
             array[start] = array[end];
