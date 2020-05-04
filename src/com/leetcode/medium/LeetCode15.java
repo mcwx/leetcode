@@ -20,9 +20,13 @@ import java.util.*;
  */
 public class LeetCode15 {
 
+
+
     public static void main(String[] args) {
+
         int[] test = new int[]{1,-1,-1,0};
-        threeSum(test);
+        List<List<Integer>> lists = threeSum(test);
+        System.out.println(lists);
     }
 
     /**
