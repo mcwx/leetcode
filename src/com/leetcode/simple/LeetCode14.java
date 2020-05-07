@@ -1,7 +1,5 @@
 package com.leetcode.simple;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * @Description:最长公共前缀 编写一个函数来查找字符串数组中的最长公共前缀。
