@@ -68,8 +68,9 @@ public class LeetCode144 {
             return res;
         }
 
+        stack.push(root);
         while (!stack.isEmpty()) {
-            TreeNode treeNode = stack.pollLast();
+            TreeNode treeNode = stack.pop();
             res.add(treeNode.getVal());
             if (treeNode.getRight() != null) {
                 stack.add(treeNode.getRight());
