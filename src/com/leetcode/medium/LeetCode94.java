@@ -52,10 +52,7 @@ public class LeetCode94 {
 
     public static List<Integer> inorderTraversal_01(TreeNode root) {
         List<Integer> result = new ArrayList<>();
-        if (root == null) {
-            return result;
-        }
-        LinkedList<TreeNode> stack = new LinkedList<>();
+        LinkedList<TreeNode> stack = new LinkedList();
 
         TreeNode curr = root;
         while (curr != null || !stack.isEmpty()) {
@@ -66,7 +63,6 @@ public class LeetCode94 {
             curr = stack.pop();
             result.add(curr.val);
             curr = curr.right;
-
         }
         return result;
     }
