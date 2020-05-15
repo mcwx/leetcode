@@ -1,6 +1,5 @@
 package com.leetcode.difficulty;
 
-import com.leetcode.util.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -30,6 +29,16 @@ import java.util.List;
  */
 public class LeetCode145 {
 
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+    }
+
     public static List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null) {
@@ -44,9 +53,9 @@ public class LeetCode145 {
         if (root == null) {
             return;
         }
-        postorder(result, root.getLeft());
-        postorder(result, root.getRight());
-        result.add(root.getVal());
+        postorder(result, root.left);
+        postorder(result, root.right);
+        result.add(root.val);
     }
 
     public static List<Integer> postorderTraversal_01(TreeNode root) {
@@ -58,14 +67,13 @@ public class LeetCode145 {
 
         stack.push(root);
         while (!stack.isEmpty()) {
-            TreeNode treeNode = stack.pollLast();
-            result.addFirst(treeNode.getVal());
-
-            if (treeNode.getLeft() != null) {
-                stack.add(treeNode.getLeft());
+            TreeNode treeNode = stack.pop();
+            result.addFirst(treeNode.val);
+            if (treeNode.left != null) {
+                stack.push(treeNode.left);
             }
-            if (treeNode.getRight() != null) {
-                stack.add(treeNode.getRight());
+            if (treeNode.right != null) {
+                stack.push(treeNode.right);
             }
         }
         return result;
