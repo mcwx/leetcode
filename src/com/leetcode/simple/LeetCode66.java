@@ -18,6 +18,12 @@ package com.leetcode.simple;
  * @Date: 2019-07-22
  */
 public class LeetCode66 {
+
+    public static void main(String[] args) {
+        int[] digits = new int[]{1, 9};
+        plusOne_02(digits);
+    }
+
     public static int[] plusOne(int[] digits) {
         int length = digits.length;
         int flag = 0;
@@ -45,5 +51,36 @@ public class LeetCode66 {
         } else {
             return digits;
         }
+    }
+
+    public static int[] plusOne_01(int[] digits) {
+        int carry = 0;
+        digits[digits.length - 1] = digits[digits.length - 1] + 1;
+        for (int i = digits.length - 1; i >= 0; i--) {
+            int tmp = digits[i] + carry;
+            carry = tmp / 10;
+            digits[i] = tmp % 10;
+        }
+        if (carry > 0) {
+            int[] result = new int[digits.length + 1];
+            result[0] = carry;
+            for (int i = 1; i < result.length; i++) {
+                result[i] = digits[i - 1];
+            }
+            return result;
+        }
+        return digits;
+    }
+
+
+    public static int[] plusOne_02(int[] digits) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+            digits[i]++;
+            digits[i] = digits[i] % 10;
+            if (digits[i] != 0) return digits;
+        }
+        digits = new int[digits.length + 1];
+        digits[0] = 1;
+        return digits;
     }
 }
