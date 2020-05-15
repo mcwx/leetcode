@@ -1,11 +1,7 @@
 package com.leetcode.medium;
 
-import com.leetcode.util.TreeNode;
-import com.leetcode.util.TreeNodeCreator;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Description:二叉树的前序遍历 给定一个二叉树，返回它的 前序 遍历。
@@ -27,11 +23,17 @@ import java.util.List;
  */
 public class LeetCode144 {
 
+    class TreeNode {
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        int val;
+        TreeNode left;
+        TreeNode right;
+    }
+
     public static void main(String[] args) {
-        LinkedList s = new LinkedList();
-        TreeNode root = TreeNodeCreator.createTreeNode();
-        List<Integer> res = preorderTraversal_01(root);
-        System.out.println(res.toString());
     }
 
     /**
@@ -50,9 +52,9 @@ public class LeetCode144 {
         if (root == null) {
             return;
         }
-        list.add(root.getVal());
-        preorder(list, root.getLeft());
-        preorder(list, root.getRight());
+        list.add(root.val);
+        preorder(list, root.left);
+        preorder(list, root.right);
     }
 
     /**
@@ -62,24 +64,23 @@ public class LeetCode144 {
      * @return
      */
     public static List<Integer> preorderTraversal_01(TreeNode root) {
-        LinkedList<TreeNode> stack = new LinkedList<>();
-        List<Integer> res = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
         if (root == null) {
-            return res;
+            return result;
         }
+        LinkedList<TreeNode> stack = new LinkedList<>();
 
         stack.push(root);
         while (!stack.isEmpty()) {
             TreeNode treeNode = stack.pop();
-            res.add(treeNode.getVal());
-            if (treeNode.getRight() != null) {
-                stack.add(treeNode.getRight());
+            result.add(treeNode.val);
+            if (treeNode.right != null) {
+                stack.push(treeNode.right);
             }
-            if (treeNode.getLeft() != null) {
-                stack.add(treeNode.getLeft());
+            if (treeNode.left != null) {
+                stack.push(treeNode.left);
             }
-
         }
-        return res;
+        return result;
     }
 }
