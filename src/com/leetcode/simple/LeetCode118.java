@@ -29,29 +29,25 @@ import java.util.List;
  * @Date: 2020/4/29
  */
 public class LeetCode118 {
-    public static void main(String[] args) {
-        generate(5);
-    }
 
     public static List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> resultList = new ArrayList<>();
-        if (numRows == 0) {
-            return resultList;
+        List<List<Integer>> result = new ArrayList<>();
+        if (numRows < 1) {
+            return result;
         }
-
-        resultList.add(new ArrayList<>());
-        resultList.get(0).add(0);
+        result.add(new ArrayList<>());
+        result.get(0).add(1);
 
         for (int i = 1; i < numRows; i++) {
-            List<Integer> row = new ArrayList<>();
-            List<Integer> preRow = resultList.get(i - 1);
-            row.add(1);
+            List<Integer> currLevel = new ArrayList<>();
+            currLevel.add(1);
+            List<Integer> preLevel = result.get(i - 1);
             for (int j = 1; j < i; j++) {
-                row.add(preRow.get(j - 1) + preRow.get(j));
+                currLevel.add(preLevel.get(j - 1) + preLevel.get(j));
             }
-            row.add(1);
-            resultList.add(row);
+            result.add(currLevel);
+            currLevel.add(1);
         }
-        return resultList;
+        return result;
     }
 }
