@@ -77,15 +77,17 @@ public class LeetCode167 {
     public static int[] twoSum_2(int[] numbers, int target) {
         int l = 0;
         int r = numbers.length - 1;
+        int tmp;
         while (l < r) {
-            if (numbers[l] + numbers[r] == target) {
-                return new int[]{l + 1, r + 1};
-            } else if (numbers[l] + numbers[r] < target) {
+            tmp = numbers[l] + numbers[r];
+            if (tmp < target) {
                 l++;
-            } else {
+            } else if (tmp > target) {
                 r--;
+            } else {
+                return new int[]{l + 1, r + 1};
             }
         }
-        return new int[]{-1, -1};
+        return new int[0];
     }
 }
