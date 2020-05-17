@@ -31,6 +31,9 @@ public class LeetCode344 {
     }
 
     public static void reverseString(char[] s) {
+        if (s == null || s.length == 0) {
+            return;
+        }
         int l = 0;
         int r = s.length - 1;
         char tmp;
