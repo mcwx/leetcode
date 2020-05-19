@@ -1,6 +1,5 @@
 package com.leetcode.simple;
 
-import java.util.TreeSet;
 
 /**
  * @Description:最大连续1的个数 给定一个二进制数组， 计算其中最大连续1的个数。
@@ -25,23 +24,22 @@ public class LeetCode485 {
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1,0,1,1,0,1};
+        int[] nums = new int[]{1, 0, 1, 1, 0, 1};
         System.out.println(findMaxConsecutiveOnes(nums));
     }
 
     public static int findMaxConsecutiveOnes(int nums[]) {
-
         int preCount = 0;
-        int curCount = 0;
+        int currCount = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 1) {
-                curCount++;
-            } else if (nums[i] == 0 || curCount != 0) {
-                preCount = Math.max(preCount, curCount);
-                curCount = 0;
+                preCount++;
+            } else {
+                currCount = Math.max(preCount, currCount);
+                preCount = 0;
             }
         }
+        return Math.max(preCount, currCount);
 
-        return Math.max(preCount, curCount);
     }
 }
