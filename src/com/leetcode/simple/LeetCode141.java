@@ -28,6 +28,22 @@ import java.util.Set;
  */
 public class LeetCode141 {
 
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        public ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public static void main(String[] args) {
+        ListNode ln = new ListNode(1);
+        ln.next = new ListNode(2);
+        ln.next.next = new ListNode(3);
+        ln.next.next.next = ln.next;
+    }
+
     /**
      * 快慢指针相遇法
      *
@@ -53,7 +69,7 @@ public class LeetCode141 {
      * @param head
      * @return
      */
-    public static boolean hasCycle1(ListNode head) {
+    public static boolean hasCycle_01(ListNode head) {
         Set<ListNode> set = new HashSet<>();
         while (head != null) {
             boolean flag = set.add(head);
@@ -63,23 +79,5 @@ public class LeetCode141 {
             head = head.next;
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        ListNode ln = new ListNode(1);
-        ln.next = new ListNode(2);
-        ln.next.next = new ListNode(3);
-        ln.next.next.next = ln.next;
-        System.out.println(hasCycle1(ln));
-    }
-
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        public ListNode(int val) {
-            this.val = val;
-        }
     }
 }
