@@ -28,20 +28,13 @@ import java.util.Set;
  */
 public class LeetCode141 {
 
-    static class ListNode {
+    class ListNode {
         int val;
         ListNode next;
 
         public ListNode(int val) {
             this.val = val;
         }
-    }
-
-    public static void main(String[] args) {
-        ListNode ln = new ListNode(1);
-        ln.next = new ListNode(2);
-        ln.next.next = new ListNode(3);
-        ln.next.next.next = ln.next;
     }
 
     /**
