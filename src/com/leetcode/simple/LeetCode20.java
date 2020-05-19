@@ -1,10 +1,7 @@
 package com.leetcode.simple;
 
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @Description:给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
@@ -39,8 +36,12 @@ import java.util.Stack;
  * @Date: 2019-08-29
  */
 public class LeetCode20 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println(LeetCode20.isValid("()[]{}"));
+        List<LeetCode20> list = new ArrayList<>();
+        while (true){
+            list.add(new LeetCode20());
+        }
     }
 
     public static boolean isValid(String s) {
