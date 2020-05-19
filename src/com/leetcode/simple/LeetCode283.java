@@ -24,18 +24,15 @@ public class LeetCode283 {
      * @param nums
      */
     public static void moveZeroes(int[] nums) {
-        if (nums == null) {
-            return;
-        }
-        int p = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                nums[p] = nums[i];
-                p++;
+        int i = 0;
+        for (int j = 0; j < nums.length; j++) {
+            if(nums[j] != 0){
+                nums[i] = nums[j];
+                i++;
             }
         }
-        for (int i = p; i < nums.length; i++) {
-            nums[i] = 0;
+        for (int j = i; j < nums.length; j++) {
+            nums[j] = 0;
         }
     }
 
