@@ -19,12 +19,32 @@ package com.leetcode.simple;
  * @Date: 2019-08-08
  */
 public class LeetCode69 {
-    public static int mySqrt(int x){
-//        return (int)Math.sqrt(x);
+
+    public static void main(String[] args) {
+        mySqrt_01(4);
+    }
+
+    public static int mySqrt(int x) {
         long a = x;
         while (a * a > x) {
-            a = (a + x / a) / 2;
+            a = x / a;
         }
         return (int) a;
+    }
+
+    public static int mySqrt_01(int x) {
+        int left = 0;
+        int right = x;
+        int ans = -1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if ((long) mid * mid <= x) {
+                ans = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return ans;
     }
 }
