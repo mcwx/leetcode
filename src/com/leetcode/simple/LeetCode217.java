@@ -47,7 +47,7 @@ public class LeetCode217 {
      * @param nums
      * @return
      */
-    public static boolean containsDuplicate_1(int[] nums) {
+    public static boolean containsDuplicate_01(int[] nums) {
         Set<Integer> set = new HashSet<>(nums.length);
         for (int i = 0; i < nums.length; i++) {
             if(set.contains(nums[i])){
@@ -64,10 +64,21 @@ public class LeetCode217 {
      * @param nums
      * @return
      */
-    public static boolean containsDuplicate_2(int[] nums) {
+    public static boolean containsDuplicate_02(int[] nums) {
         Arrays.sort(nums);
         for (int i = 0; i < nums.length - 1; i++) {
             if(nums[i] == nums[i+1]){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public static boolean containsDuplicate_03(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            if(!set.add(nums[i])){
                 return true;
             }
         }
