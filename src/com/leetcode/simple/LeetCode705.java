@@ -30,6 +30,30 @@ import java.util.LinkedList;
  */
 public class LeetCode705 {
 
+    class Bucket {
+        private LinkedList<Integer> container;
+
+        public Bucket() {
+            container = new LinkedList<Integer>();
+        }
+
+        public void insert(Integer key) {
+            int index = this.container.indexOf(key);
+            if (index == -1) {
+                this.container.addFirst(key);
+            }
+        }
+
+        public void delete(Integer key) {
+            this.container.remove(key);
+        }
+
+        public boolean exists(Integer key) {
+            int index = this.container.indexOf(key);
+            return (index != -1);
+        }
+    }
+
     private Bucket[] bucketArray;
     private int keyRange;
 
@@ -60,30 +84,6 @@ public class LeetCode705 {
     public boolean contains(int key) {
         int bucketIndex = this._hash(key);
         return this.bucketArray[bucketIndex].exists(key);
-    }
-}
-
-class Bucket {
-    private LinkedList<Integer> container;
-
-    public Bucket() {
-        container = new LinkedList<Integer>();
-    }
-
-    public void insert(Integer key) {
-        int index = this.container.indexOf(key);
-        if (index == -1) {
-            this.container.addFirst(key);
-        }
-    }
-
-    public void delete(Integer key) {
-        this.container.remove(key);
-    }
-
-    public boolean exists(Integer key) {
-        int index = this.container.indexOf(key);
-        return (index != -1);
     }
 }
 
