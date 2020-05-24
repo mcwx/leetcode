@@ -39,7 +39,7 @@ public class LeetCode20 {
     public static void main(String[] args) throws InterruptedException {
         System.out.println(LeetCode20.isValid("()[]{}"));
         List<LeetCode20> list = new ArrayList<>();
-        while (true){
+        while (true) {
             list.add(new LeetCode20());
         }
     }
@@ -63,6 +63,28 @@ public class LeetCode20 {
             }
         }
         return stack.isEmpty();
+    }
+
+    public static boolean isValid_01(String s) {
+        HashMap<Character, Character> map = new HashMap<>();
+        map.put(')', '(');
+        map.put(']', '[');
+        map.put('}', '{');
+        LinkedList<Character> stack = new LinkedList<>();
+        for (int i = 0; i < s.length(); i++) {
+            char currChar = s.charAt(i);
+            if (map.containsKey(currChar)) {
+                if (stack.isEmpty() || !map.get(currChar).equals(stack.pop())) {
+                    return false;
+                }
+            } else {
+                stack.push(currChar);
+            }
+        }
+        if (stack.isEmpty()) {
+            return true;
+        }
+        return false;
     }
 
 }
