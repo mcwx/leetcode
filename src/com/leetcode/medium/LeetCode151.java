@@ -38,7 +38,7 @@ public class LeetCode151 {
     public static void main(String[] args) {
         String s = "a good   example";
 //        System.out.println("s" + s.trim());
-        System.out.println(reverseWords_01(s));
+        System.out.println(reverseWords_02(s));
     }
 
     public static String reverseWords(String s) {
@@ -47,9 +47,11 @@ public class LeetCode151 {
         StringBuilder sb = new StringBuilder();
         int i;
         for (i = s.length() - 2; i >= 0; i--) {
-            if (s.charAt(i) == ' ' && s.charAt(i + 1) != ' ') {
+            char curr = s.charAt(i);
+            char next = s.charAt(i + 1);
+            if (curr == ' ' && next != ' ') {
                 sb.append(s, i + 1, p).append(' ');
-            } else if (s.charAt(i) != ' ' && s.charAt(i + 1) == ' ') {
+            } else if (curr != ' ' && next == ' ') {
                 p = i + 1;
             }
         }
@@ -61,5 +63,52 @@ public class LeetCode151 {
         List<String> sList = Arrays.asList(s.split("\\s+"));
         Collections.reverse(sList);
         return String.join(" ", sList);
+    }
+
+    public static String reverseWords_02(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+        //去除首位空格
+        while (left <= right && s.charAt(left) == ' ') {
+            left++;
+        }
+        while (left <= right && s.charAt(right) == ' ') {
+            right--;
+        }
+        //去除中间多余的空格
+        StringBuilder sb = new StringBuilder();
+        while (left <= right) {
+            if (s.charAt(left) != ' ') {
+                sb.append(s.charAt(left));
+                left++;
+            } else {
+                sb.append(' ');
+                while (s.charAt(left) == ' ') {
+                    left++;
+                }
+            }
+        }
+        char[] charArr = sb.toString().toCharArray();
+        reverseCharArr(charArr, 0, charArr.length - 1);
+        int i = 0;
+        for (int j = 0; j < charArr.length; j++) {
+            if (charArr[j] == ' ') {
+                reverseCharArr(charArr, i, j - 1);
+                i = j + 1;
+            }
+        }
+        reverseCharArr(charArr, i, charArr.length - 1);
+        return new String(charArr);
+    }
+
+    private static void reverseCharArr(char[] charArr, int left, int right) {
+        char tmp;
+        while (left < right) {
+            tmp = charArr[left];
+            charArr[left] = charArr[right];
+            charArr[right] = tmp;
+            left++;
+            right--;
+        }
     }
 }
