@@ -47,4 +47,37 @@ public class LeetCode69 {
         }
         return ans;
     }
+
+    public static int mySqrt_02(int x) {
+        int left = 0;
+        int right = x;
+        int ans = -1;
+        while (left <= right) {
+            int mid = right - (right - left) / 2;
+            if ((long) mid * mid <= x) {
+                ans = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return ans;
+    }
+
+    public static int mySqrt_03(int x) {
+        if (x == 1) {
+            return 1;
+        }
+        int left = 0;
+        int right = x;
+        while (right - left > 1) {
+            int mid = left + (right - left) / 2;
+            if ((long) mid * mid <= x) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+        return left;
+    }
 }
