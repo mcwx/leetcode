@@ -66,4 +66,41 @@ public class LeetCode21 {
             return l2;
         }
     }
+
+
+    public static ListNode mergeTwoLists_02(ListNode l1, ListNode l2) {
+        ListNode result = new ListNode(0);
+        ListNode currNode = result;
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                currNode.next = new ListNode(l1.val);
+                l1 = l1.next;
+            } else {
+                currNode.next = new ListNode(l2.val);
+                l2 = l2.next;
+            }
+            currNode = currNode.next;
+        }
+        if (l1 != null) {
+            currNode.next = l1;
+        }
+        if (l2 != null) {
+            currNode.next = l2;
+        }
+        return result.next;
+    }
+
+    public static ListNode mergeTwoLists_03(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        } else if (l2 == null) {
+            return l1;
+        } else if (l1.val < l2.val) {
+            l1.next = mergeTwoLists_03(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeTwoLists_03(l1, l2.next);
+            return l2;
+        }
+    }
 }
