@@ -1,5 +1,7 @@
 package com.leetcode.medium;
 
+import java.util.*;
+
 /**
  * @Description:跳跃游戏 给定一个非负整数数组，你最初位于数组的第一个位置。
  * <p>
@@ -26,6 +28,12 @@ package com.leetcode.medium;
  */
 public class LeetCode55 {
 
+    public static void main(String[] args) {
+        int[] testData = new int[]{2, 3, 1, 1, 4};
+        LeetCode55 leetCode55 = new LeetCode55();
+        System.out.println(leetCode55.canJump(testData));
+    }
+
     public boolean canJump(int[] nums) {
         int nLength = nums.length;
         int mostRight = 0;
@@ -35,15 +43,8 @@ public class LeetCode55 {
                 if (mostRight >= nLength - 1) {
                     return true;
                 }
-
             }
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        int[] testData = new int[]{2,3,1,1,4};
-        LeetCode55 leetCode55 = new LeetCode55();
-        System.out.println(leetCode55.canJump(testData));
     }
 }
