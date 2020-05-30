@@ -47,7 +47,6 @@ public class LeetCode414 {
                 set.remove(set.first());
             }
         }
-
         return set.size() == 3 ? set.first() : set.last();
     }
 }
