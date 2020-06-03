@@ -1,5 +1,8 @@
 package com.leetcode.medium;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * @Description: 给出一个区间的集合，请合并所有重叠的区间。
  * <p>
@@ -25,10 +28,18 @@ public class LeetCode56 {
     public static void main(String[] args) {
         LeetCode56 leetCode56 = new LeetCode56();
 
+//        int[] testArr = {1, 2, 58, 8, 9, 61, 2};
+//        Arrays.sort(testArr);
+//        System.out.println(Arrays.toString(testArr));
+//        String[] sArr = new String[]{"a", "b"};
+//        Arrays.sort(sArr, Collections.reverseOrder());
+//        System.out.println(Arrays.toString(sArr));
+//        System.out.println(Arrays.toString(testArr));
+
+
         int[][] testData = new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}};
-        long startTime = System.currentTimeMillis();
-        leetCode56.merge(testData);
-        System.out.println(System.currentTimeMillis() - startTime);
+        int[][] ints = leetCode56.merge_01(testData);
+        System.out.println(Arrays.toString(ints));
 
     }
 
@@ -66,5 +77,19 @@ public class LeetCode56 {
             resultArray[i] = tempArray[i];
         }
         return resultArray;
+    }
+
+    public int[][] merge_01(int[][] intervals) {
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+        int[][] result = new int[intervals.length][2];
+        int idx = -1;
+        for (int[] interval : intervals) {
+            if (idx == -1 || interval[0] > result[idx][1]) {
+                result[++idx] = interval;
+            } else {
+                result[idx][1] = Math.max(result[idx][1], interval[1]);
+            }
+        }
+        return Arrays.copyOf(result, idx + 1);
     }
 }
